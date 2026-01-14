@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kỷ Niệm 5 Năm Yêu Nhau ❤️</title>
+    <style>
+        :root {
+            --primary-color: #ff4d6d;
+            --heart-color: #ff758f;
+            --bg-color: #ffdae0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Hiệu ứng trái tim rơi nhẹ toàn màn hình */
+        .bg-heart {
+            position: fixed;
+            top: -10%;
+            font-size: 20px;
+            color: rgba(255, 77, 109, 0.3);
+            user-select: none;
+            z-index: 0;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        .container {
+            position: relative;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Hộp quà */
+        .gift-box {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            background-color: var(--primary-color);
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            z-index: 5;
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .gift-box::before {
+            content: "🎀";
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 60px;
+            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1));
+        }
+
+        /* Ruy băng trắng trên hộp */
+        .gift-box::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 100%;
+            background: rgba(255,255,255,0.8);
+            left: 55px;
+            border-radius: 2px;
+        }
+
+        /* Bức thư */
+        .letter {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) scale(0.1);
+            width: 320px;
+            max-width: 85vw;
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            border: 5px double var(--heart-color);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.8s ease;
+            text-align: center;
+            z-index: 4;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        /* Trang trí bên trong thư */
+        .letter h3 { color: #c9184a; font-size: 22px; margin-bottom: 15px; }
+        .letter p { color: #590d22; line-height: 1.6; font-size: 16px; margin: 10px 0; }
+
+        /* Hiệu ứng khi mở */
+        .container.open .gift-box {
+            transform: translateY(200px) rotate(15deg) scale(0);
+            opacity: 0;
+        }
+
+        .container.open .letter {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-50px) scale(1);
+        }
+
+        /* Trái tim bay ra khi click */
+        .heart-explosion {
+            position: absolute;
+            pointer-events: none;
+            animation: explode 1s ease-out forwards;
+            z-index: 6;
+        }
+
+        @keyframes explode {
+            0% { transform: translate(0, 0); opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)); opacity: 0; }
+        }
+
+        .footer-text {
+            text-align: center;
+            color: #fff;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+            font-weight: bold;
+            margin-top: 25px;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" onclick="openGift(this)">
+        <div class="letter">
+            <h3>Gửi em bé của anh 💞🫶</h3>
+            <p>💘 Cảm ơn em vì đã luôn bên anh, đã yêu anh bằng sự dịu dàng, kiên nhẫn và chân thành.</p>
+            <p>Mỗi khoảnh khắc bên em – dù vui hay buồn – đều khiến anh trân trọng và yêu em nhiều hơn ạa 💋</p>
+            <p>🥰 Anh không biết nói lời hoa mỹ nhưng mà được bên em, được yêu thương em là điều may mắn và tuyệt vời nhất với anh ạ 😍</p>
+            <p>🫰 Anh mong rằng hai đứa mình sẽ có thêm những kỷ niệm thật đẹp nữa bên nhau, cùng nhau cười, cùng chia sẻ, cùng cố gắng và yêu thương nhau ạ ❤️‍🔥</p>
+            <p style="font-size: 1.1rem; font-weight: bold;">Anh yêuuu em bé của a nhứtttt 💋😍💞💖😘💘🫶🥰</p>
+            <div style="font-size: 25px; margin-top: 15px;">🌹🌹🌹</div>
+        </div>
+        
+        <div class="gift-box"></div>
+        <div class="footer-text">Happy 5-Year Anniversary 💓<br><span style="font-size: 0.9rem; opacity: 0.8;">(Chạm vào hộp quà nhé)</span></div>
+    </div>
+
+    <script>
+        // Tạo hiệu ứng tim rơi nền
+        function createBackgroundHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('bg-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            heart.style.opacity = Math.random() * 0.5;
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 8000);
+        }
+        setInterval(createBackgroundHeart, 500);
+
+        // Hiệu ứng nổ tim khi mở quà
+        function explodeHearts() {
+            for (let i = 0; i < 30; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-explosion');
+                heart.innerHTML = ['❤️','💖','💝','💗','🌸'][Math.floor(Math.random()*5)];
+                heart.style.left = '50%';
+                heart.style.top = '50%';
+                
+                // Tạo hướng ngẫu nhiên
+                const x = (Math.random() - 0.5) * 400 + 'px';
+                const y = (Math.random() - 0.5) * 400 + 'px';
+                heart.style.setProperty('--x', x);
+                heart.style.setProperty('--y', y);
+                
+                document.querySelector('.container').appendChild(heart);
+                setTimeout(() => heart.remove(), 1000);
+            }
+        }
+
+        function openGift(el) {
+            if(!el.classList.contains('open')) {
+                el.classList.add('open');
+                explodeHearts();
+                // Thay đổi tiêu đề trang web
+                document.title = "Anh Yêu Em! ❤️";
+            }
+        }
+    </script>
+</body>
+</html>
